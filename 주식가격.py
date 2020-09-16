@@ -29,3 +29,5 @@ def solution(prices):
         answer.append(mysec)
     answer.append(0)
     return answer
+
+
