@@ -27,22 +27,21 @@ solution 함수의 매개변수로 다리 길이 bridge_length,
 def solution(bl, w, tw):
     answer = 0
     bridge = []
+    
     while len(tw):
+        answer+=1
         if len(bridge):
+            if bridge[0][0]<=1:
+                bridge.pop(0)
             if sum([b[1] for b in bridge])+tw[0]>w:
                 for b in bridge:
                     b[0]-=1
-                answer+=1
             else:
                 for b in bridge:
                     b[0]-=1
                 bridge.append([bl,tw.pop(0)])
-                answer+=1
-            if bridge[0][0]<=1:
-                bridge.pop(0)
         else:
             bridge.append([bl,tw.pop(0)])
-            answer+=1
 
     if len(bridge):
         answer+=bridge[-1][0]
