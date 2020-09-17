@@ -27,18 +27,14 @@ solution 함수의 매개변수로 다리 길이 bridge_length,
 def solution(bl, w, tw):
     answer = 0
     bridge = []
-    
     while len(tw):
         answer+=1
         if len(bridge):
-            if bridge[0][0]<=1:
+            for b in bridge:
+                b[0]-=1
+            if bridge[0][0]<=0:
                 bridge.pop(0)
-            if sum([b[1] for b in bridge])+tw[0]>w:
-                for b in bridge:
-                    b[0]-=1
-            else:
-                for b in bridge:
-                    b[0]-=1
+            if sum([b[1] for b in bridge])+tw[0]<=w:
                 bridge.append([bl,tw.pop(0)])
         else:
             bridge.append([bl,tw.pop(0)])
@@ -51,9 +47,11 @@ def solution(bl, w, tw):
     
 """
 while문을 돌때마다 1초가 지난다고 가정하였기 때문에 대기트럭배열에 트럭이 있는 한 시간은 계속 지나간다.
-다리를 건너는 트럭 배열 bridge위의 트럭 무게의 합과 대기0번 트럭무게의 합이 다리의 최대 하중 w를 넘는다면 그냥 1초를 더해주고,
-하중 w를 넘지 않는다면 다리에 실어주고 1초를 더하는 방법으로 문제를 풀었다.
-while문을 다시 돌아갈 때 어차피 1초가 지나간다고 가정하였으므로 while문의 마지막에(bridge의 요소가 있을 때) bridge위의 트럭중 다리를 다 지나기 1초전의 요소를 pop으로 제거해준다.
+시간이 지날 때마다 총 시간 answer는 1씩 증가하고
+다리에 오를 때 각 트럭무게 앞에 붙은 다리길이만큼의 시간은 1씩 감소한다.
+각 트럭이 가지고 있는 시간이 0이 될 때 다리를 다 건넌 것이 되므로
+while문의 시작에(bridge의 요소가 있을 때) bridge위의 트럭중 다리위 시간이 0초 남은 요소를 pop으로 제거해준다.
+그 후 다리를 건너는 트럭 배열 bridge위의 트럭 무게의 합과 대기0번 트럭무게의 합이 다리의 최대 하중 w를 넘지 않는다면 다리에 실어주는 방법으로 문제를 풀었다.
 트럭이 모두 출발하여 대기트럭의 배열이 비게 되었을 때,
 다리에 오른 트럭 중 가장 마지막 트럭에게 필요한 시간을 answer에 더해주면 모든 트럭이 다리를 건너는 데 필요한 총 시간이 나온다.
 """
