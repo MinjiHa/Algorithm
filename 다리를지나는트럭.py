@@ -55,3 +55,30 @@ while문의 시작에(bridge의 요소가 있을 때) bridge위의 트럭중 다
 트럭이 모두 출발하여 대기트럭의 배열이 비게 되었을 때,
 다리에 오른 트럭 중 가장 마지막 트럭에게 필요한 시간을 answer에 더해주면 모든 트럭이 다리를 건너는 데 필요한 총 시간이 나온다.
 """
+
+# 효율성을 개선한 코드
+
+def solution(bl, w, tw):
+    answer = 0
+    bridge = []
+    while len(tw):
+        answer+=1
+        if len(bridge):
+            if bridge[0][0]<=1:
+                bridge.pop(0)
+            for b in bridge:
+                b[0]-=1
+            if sum([b[1] for b in bridge])+tw[0]<=w:
+                bridge.append([bl,tw.pop(0)])
+        else:
+            bridge.append([bl,tw.pop(0)])
+
+    if len(bridge):
+        answer+=bridge[-1][0]
+    
+    return answer
+
+"""
+while문을 들어왔을 때는 이미 1초가 지나간 상황으로, 다리위의 트럭 중 0초가 아닌 1초가 남아있는 트럭을 미리 제거해 준 뒤(어치피 다음코드로 1을 빼서 0이 될 것이기 때문)
+다리위의 모든 트럭에 대해서 다리를 지나기 위해 남아있는 시간을 1씩 빼주게 되면 미리 제거된 트럭에 대해서는 시간을 빼주는 연산을 할 필요가 없으므로 위의 코드보다 조금더 효율이 좋아진다.
+"""
