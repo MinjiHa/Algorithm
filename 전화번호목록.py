@@ -13,10 +13,10 @@ phone_book의 길이는 1 이상 1,000,000 이하입니다.
 각 전화번호의 길이는 1 이상 20 이하입니다.
 
 입출력 예제
-phone_book	                return
-[119, 97674223, 1195524421]	false
-[123,456,789]	              true
-[12,123,1235,567,88]	      false
+phone_book	                    return
+[119, 97674223, 1195524421]	    false
+[123,456,789]	                true
+[12,123,1235,567,88]	        false
 
 입출력 예 #1
 앞에서 설명한 예와 같습니다.
@@ -38,3 +38,8 @@ def solution(phone_book):
             answer=False
             break
     return answer
+
+"""
+string 배열을 sort하면 i번째를 포함할 가능성이 가장 큰 번호가 i+1에 배치되기 때문에
+정렬후 앞 번호가 뒷번호에 포함되는 경우를 발견하면 해당케이스에서 바로 False를 반환하고 break 해주었다.
+"""
