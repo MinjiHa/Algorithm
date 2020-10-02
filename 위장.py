@@ -33,6 +33,8 @@ headgear에 해당하는 의상이 yellow_hat, green_turban이고 eyewear에 해
 
 """
 
+
+
 def solution(clothes):
     myhash = {}
     for item in clothes:
@@ -48,6 +50,8 @@ def solution(clothes):
     
     return answer-1
   
+    
+    
 """
 옷의 종류를 key로 하는 해시를 만들어 옷을 담고
 각 key에 들어가있는 요소의 갯수 +1을 서로 곱한다.
@@ -57,6 +61,8 @@ def solution(clothes):
 위의 코드는 해시를 사용한 코드이고, Counter를 사용하면 해시를 쓰지 않고도 각 종류의 옷의 갯수를 셀 수 있다.
 """
 
+
+
 def solution(clothes):
     from collections import Counter
     from functools import reduce
@@ -64,16 +70,22 @@ def solution(clothes):
     answer = reduce(lambda x, y: x*(y+1), cnt.values(), 1) - 1
     return answer
   
+    
+    
 """
 Counter와 reduce를 사용한 사람의 코드이다.
 reduce를 사용하여 for문을 돌리지 않고 각요소+1 의 값을 모두 곱했다.
 """
+
+
 
 import collections
 from functools import reduce
 
 def solution(c):
     return reduce(lambda x,y:x*y,[a+1 for a in collections.Counter([x[1] for x in c]).values()])-1
+
+
 
 """
 위의 코드와 같은 내용이다. 모듈 임포트 부분을 함수 밖으로 빼고 Counter 와 reduce를 한줄로 합쳤다.
