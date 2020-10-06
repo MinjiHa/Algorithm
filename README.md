@@ -7,3 +7,4 @@
 - 위장 : Counter / reduce
 - 큰 수 만들기 : Stack
 - 더 맵게 : heapq
+- 프린터 : deque / any
