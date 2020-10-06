@@ -8,3 +8,6 @@
 - 큰 수 만들기 : Stack
 - 더 맵게 : heapq
 - 프린터 : deque / any
+- 구명보트 : deque
+- 기능개발 : zip
+- 두개 뽑아서 더하기 : itertools.permutation
