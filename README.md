@@ -11,3 +11,4 @@
 - 구명보트 : deque
 - 기능개발 : zip
 - 두개 뽑아서 더하기 : itertools.permutation
+- 소수찾기 : itertools.permutations
